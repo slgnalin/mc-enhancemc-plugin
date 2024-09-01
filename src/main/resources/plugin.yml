@@ -1,4 +1,20 @@
 name: mc-essentials-plugin
+description: Minecraft Essential Commands and Features Plugin
+author: slgnalin
+website: https://github.com/slgnalin
 version: '1.0-SNAPSHOT'
 main: org.slgnalin.essentials.Essentials
 api-version: '1.21'
+
+commands:
+  teleport-request:
+    description: Sends a teleport request to a specific user
+    aliases:
+      - tpa
+      - tpask
+    usage: "Usage: /<command> <player>"
+  teleport-accept:
+    description: Accepts the most recent teleport request
+    aliases:
+      - tpaccept
+    usage: "Usage: /<command>"

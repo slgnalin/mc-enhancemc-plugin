@@ -1,0 +1,4 @@
+name: mc-essentials-plugin
+version: '1.0-SNAPSHOT'
+main: org.slgnalin.essentials.Essentials
+api-version: '1.21'

@@ -4,7 +4,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
@@ -19,7 +18,7 @@ import java.util.List;
  *
  * @see TeleportRequestManager
  */
-public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
+public class TeleportRequestCommand extends AbstractPlayerCommand implements TabExecutor {
 
     private final TeleportRequestManager teleportRequestManager;
 
@@ -28,17 +27,11 @@ public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-
-        if (!(commandSender instanceof Player sourcePlayer)) {
-            commandSender.sendMessage("This command can only be executed by a player");
-            return true;
-        }
-
+    public boolean handleCommand(@NotNull Player player, @NotNull Command command, @NotNull String commandAlias, @NotNull String[] args) {
         final String targetPlayerName = args[0];
 
-        if (commandSender.getName().equals(targetPlayerName)) {
-            commandSender.sendMessage(Component.text("You can not send a teleport request to yourself", NamedTextColor.RED));
+        if (player.getName().equals(targetPlayerName)) {
+            player.sendMessage(Component.text("You can not send a teleport request to yourself", NamedTextColor.RED));
             return true;
         }
 
@@ -46,19 +39,19 @@ public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
 
         if (targetPlayer == null) {
             final Component message = Component.text("The teleport request could not be sent to the target player", NamedTextColor.RED);
-            sourcePlayer.sendMessage(message);
+            player.sendMessage(message);
 
             return true;
         }
 
         if (!targetPlayer.isOnline()) {
             final Component message = Component.text("Player is not online", NamedTextColor.RED);
-            sourcePlayer.sendMessage(message);
+            player.sendMessage(message);
 
             return true;
         }
 
-        teleportRequestManager.sendRequest(sourcePlayer, targetPlayer);
+        teleportRequestManager.sendRequest(player, targetPlayer);
 
         return true;
     }

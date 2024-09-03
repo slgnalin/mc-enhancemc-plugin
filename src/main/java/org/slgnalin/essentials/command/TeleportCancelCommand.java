@@ -1,8 +1,6 @@
 package org.slgnalin.essentials.command;
 
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.slgnalin.essentials.manager.TeleportRequestManager;
@@ -12,7 +10,7 @@ import org.slgnalin.essentials.manager.TeleportRequestManager;
  *
  * @see TeleportRequestManager
  */
-public class TeleportCancelCommand implements CommandExecutor {
+public class TeleportCancelCommand extends AbstractPlayerCommand {
 
     private final TeleportRequestManager teleportRequestManager;
 
@@ -21,15 +19,8 @@ public class TeleportCancelCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-
-        if (!(commandSender instanceof Player player)) {
-            commandSender.sendMessage("This command can only be executed by a player");
-            return true;
-        }
-
+    public boolean handleCommand(@NotNull Player player, @NotNull Command command, @NotNull String commandAlias, @NotNull String[] args) {
         teleportRequestManager.cancelRequests(player);
-
         return true;
     }
 

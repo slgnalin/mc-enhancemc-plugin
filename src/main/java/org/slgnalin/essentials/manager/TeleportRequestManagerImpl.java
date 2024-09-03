@@ -41,8 +41,10 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
     }
 
     @Override
-    public void cancelRequest() {
+    public void cancelRequests(Player player) {
+        requests.entrySet().removeIf(entry -> entry.getValue().equals(player.getUniqueId()));
 
+        player.sendMessage(Component.text("All sent teleport request were canceled", NamedTextColor.WHITE));
     }
 
     @Override
@@ -59,6 +61,7 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
 
         if (sourcePlayer != null && sourcePlayer.isOnline()) {
             sourcePlayer.teleport(targetPlayer);
+
             requests.remove(targetPlayer.getUniqueId());
 
             sendAcceptMessageToSourcePlayer(sourcePlayer);

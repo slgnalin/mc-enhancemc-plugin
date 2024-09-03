@@ -12,7 +12,15 @@ commands:
     aliases:
       - tpa
       - tpask
+      - tpr
+      - tprequest
     usage: "Usage: /<command> <player>"
+  teleport-cancel:
+    description: Cancels all sent teleport requests
+    aliases:
+      - tpcancel
+      - tpacancel
+    usage: "Usage: /<command>"
   teleport-accept:
     description: Accepts the most recent teleport request
     aliases:

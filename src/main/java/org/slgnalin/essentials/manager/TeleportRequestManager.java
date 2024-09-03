@@ -23,14 +23,14 @@ public interface TeleportRequestManager {
     void cancelRequests(Player targetPlayer);
 
     /**
-     * Accepts the most recent pending (incoming) teleport request for the specified target player
+     * Accepts the most recent active (incoming) teleport request for the specified target player
      *
      * @param targetPlayer the target player for which to accept the request
      */
     void acceptRequest(Player targetPlayer);
 
     /**
-     * Denies the most recent pending (incoming) teleport request for the specified target player
+     * Denies the most recent active (incoming) teleport request for the specified target player
      *
      * @param targetPlayer the target player for which to deny the request
      */

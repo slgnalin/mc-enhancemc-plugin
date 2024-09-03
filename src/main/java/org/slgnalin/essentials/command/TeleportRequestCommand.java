@@ -30,6 +30,10 @@ public class TeleportRequestCommand extends AbstractPlayerCommand implements Tab
 
     @Override
     public boolean handleCommand(@NotNull Player player, @NotNull Command command, @NotNull String commandAlias, @NotNull String[] args) {
+        if (args.length == 0) {
+            return false;
+        }
+
         final String targetPlayerName = args[0];
 
         if (player.getName().equals(targetPlayerName)) {

@@ -9,17 +9,23 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
+ * <p>
  * Manages teleport requests between players
+ * </p>
  *
  * @see TeleportRequestManagerImpl#teleportRequests
  */
 public class TeleportRequestManagerImpl implements TeleportRequestManager {
 
     /**
+     * <p>
      * Stores the active teleport requests between players
+     * </p>
+     *
      * <p>
      * The key represents the {@code UUID} of the player who sent the request,
      * while the value represents the {@code UUID} of the player to whom the request was sent
+     * </p>
      */
     private final Map<UUID, UUID> teleportRequests;
 

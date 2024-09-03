@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import org.slgnalin.essentials.manager.TeleportRequestManager;
 
 /**
+ * <p>
  * Handles the command responsible for cancelling teleport requests
+ * </p>
  *
  * @see TeleportRequestManager
  */

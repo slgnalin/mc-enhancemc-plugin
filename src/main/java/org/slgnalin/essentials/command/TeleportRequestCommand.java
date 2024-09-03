@@ -14,7 +14,9 @@ import org.slgnalin.essentials.manager.TeleportRequestManager;
 import java.util.List;
 
 /**
+ * <p>
  * Handles the command responsible for registering teleport requests
+ * </p>
  *
  * @see TeleportRequestManager
  */

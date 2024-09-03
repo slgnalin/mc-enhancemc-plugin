@@ -16,10 +16,10 @@ import java.util.List;
 
 public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
 
-    private final TeleportRequestManager manager;
+    private final TeleportRequestManager teleportRequestManager;
 
-    public TeleportRequestCommand(TeleportRequestManager manager) {
-        this.manager = manager;
+    public TeleportRequestCommand(TeleportRequestManager teleportRequestManager) {
+        this.teleportRequestManager = teleportRequestManager;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
             return true;
         }
 
-        manager.sendRequest(sourcePlayer, targetPlayer);
+        teleportRequestManager.sendRequest(sourcePlayer, targetPlayer);
 
         return true;
     }

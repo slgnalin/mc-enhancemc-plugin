@@ -9,10 +9,10 @@ import org.slgnalin.essentials.manager.TeleportRequestManager;
 
 public class TeleportCancelCommand implements CommandExecutor {
 
-    private final TeleportRequestManager manager;
+    private final TeleportRequestManager teleportRequestManager;
 
-    public TeleportCancelCommand(TeleportRequestManager manager) {
-        this.manager = manager;
+    public TeleportCancelCommand(TeleportRequestManager teleportRequestManager) {
+        this.teleportRequestManager = teleportRequestManager;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class TeleportCancelCommand implements CommandExecutor {
             return true;
         }
 
-        manager.cancelRequests(player);
+        teleportRequestManager.cancelRequests(player);
 
         return true;
     }

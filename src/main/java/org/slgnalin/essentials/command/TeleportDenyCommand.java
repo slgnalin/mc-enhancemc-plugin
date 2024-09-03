@@ -9,10 +9,10 @@ import org.slgnalin.essentials.manager.TeleportRequestManager;
 
 public class TeleportDenyCommand implements CommandExecutor {
 
-    private final TeleportRequestManager manager;
+    private final TeleportRequestManager teleportRequestManager;
 
-    public TeleportDenyCommand(TeleportRequestManager manager) {
-        this.manager = manager;
+    public TeleportDenyCommand(TeleportRequestManager teleportRequestManager) {
+        this.teleportRequestManager = teleportRequestManager;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class TeleportDenyCommand implements CommandExecutor {
             return true;
         }
 
-        manager.denyRequest(player);
+        teleportRequestManager.denyRequest(player);
 
         return true;
     }

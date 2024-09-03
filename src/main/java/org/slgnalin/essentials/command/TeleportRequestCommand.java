@@ -39,6 +39,20 @@ public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
 
         final Player targetPlayer = Bukkit.getServer().getPlayerExact(targetPlayerName);
 
+        if (targetPlayer == null) {
+            final Component message = Component.text("The teleport request could not be sent to the target player", NamedTextColor.RED);
+            sourcePlayer.sendMessage(message);
+
+            return true;
+        }
+
+        if (!targetPlayer.isOnline()) {
+            final Component message = Component.text("Player is not online", NamedTextColor.RED);
+            sourcePlayer.sendMessage(message);
+
+            return true;
+        }
+
         manager.sendRequest(sourcePlayer, targetPlayer);
 
         return true;

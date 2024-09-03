@@ -19,20 +19,6 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
 
     @Override
     public void sendRequest(Player sourcePlayer, Player targetPlayer) {
-        if (targetPlayer == null) {
-            final Component message = Component.text("The teleport request could not be sent to the target player", NamedTextColor.RED);
-            sourcePlayer.sendMessage(message);
-
-            return;
-        }
-
-        if (!targetPlayer.isOnline()) {
-            final Component message = Component.text("Player is not online", NamedTextColor.RED);
-            sourcePlayer.sendMessage(message);
-
-            return;
-        }
-
         requests.put(targetPlayer.getUniqueId(), sourcePlayer.getUniqueId());
 
         sendRequestMessageToSourcePlayer(sourcePlayer, targetPlayer);

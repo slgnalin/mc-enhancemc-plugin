@@ -7,6 +7,11 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.slgnalin.essentials.manager.TeleportRequestManager;
 
+/**
+ * Handles the command responsible for accepting teleport requests
+ *
+ * @see TeleportRequestManager
+ */
 public class TeleportAcceptCommand implements CommandExecutor {
 
     private final TeleportRequestManager teleportRequestManager;

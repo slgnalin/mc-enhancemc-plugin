@@ -7,6 +7,11 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.slgnalin.essentials.manager.TeleportRequestManager;
 
+/**
+ * Handles the command responsible for cancelling teleport requests
+ *
+ * @see TeleportRequestManager
+ */
 public class TeleportCancelCommand implements CommandExecutor {
 
     private final TeleportRequestManager teleportRequestManager;

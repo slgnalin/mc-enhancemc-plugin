@@ -14,6 +14,11 @@ import org.slgnalin.essentials.manager.TeleportRequestManager;
 
 import java.util.List;
 
+/**
+ * Handles the command responsible for registering teleport requests
+ *
+ * @see TeleportRequestManager
+ */
 public class TeleportRequestCommand implements CommandExecutor, TabExecutor {
 
     private final TeleportRequestManager teleportRequestManager;

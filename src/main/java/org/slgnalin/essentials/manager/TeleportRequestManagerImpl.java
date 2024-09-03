@@ -8,32 +8,59 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Manages teleport requests between players
+ *
+ * @see TeleportRequestManagerImpl#teleportRequests
+ */
 public class TeleportRequestManagerImpl implements TeleportRequestManager {
 
-    private final Map<UUID, UUID> requests;
+    /**
+     * Stores the active teleport requests between players
+     * <p>
+     * The key represents the {@code UUID} of the player who sent the request,
+     * while the value represents the {@code UUID} of the player to whom the request was sent
+     */
+    private final Map<UUID, UUID> teleportRequests;
 
     public TeleportRequestManagerImpl() {
-        this.requests = new HashMap<>();
+        this.teleportRequests = new HashMap<>();
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param sourcePlayer the player who initiates the teleport request
+     * @param targetPlayer the player who is the target of the teleport request
+     */
     @Override
     public void sendRequest(Player sourcePlayer, Player targetPlayer) {
-        requests.put(targetPlayer.getUniqueId(), sourcePlayer.getUniqueId());
+        teleportRequests.put(targetPlayer.getUniqueId(), sourcePlayer.getUniqueId());
 
         MessageUtils.sendRequestMessageToSourcePlayer(sourcePlayer, targetPlayer);
         MessageUtils.sendRequestMessageToTargetPlayer(sourcePlayer, targetPlayer);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param targetPlayer the player for which to cancel the requests
+     */
     @Override
-    public void cancelRequests(Player player) {
-        requests.entrySet().removeIf(entry -> entry.getValue().equals(player.getUniqueId()));
+    public void cancelRequests(Player targetPlayer) {
+        teleportRequests.entrySet().removeIf(entry -> entry.getValue().equals(targetPlayer.getUniqueId()));
 
-        player.sendMessage(MessageUtils.MSG_TP_REQUEST_CANCEL);
+        targetPlayer.sendMessage(MessageUtils.MSG_TP_REQUEST_CANCEL);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param targetPlayer the target player for which to accept the request
+     */
     @Override
     public void acceptRequest(Player targetPlayer) {
-        final UUID sourcePlayerId = requests.get(targetPlayer.getUniqueId());
+        final UUID sourcePlayerId = teleportRequests.get(targetPlayer.getUniqueId());
 
         if (sourcePlayerId == null) {
             targetPlayer.sendMessage(MessageUtils.MSG_TP_NO_ACTIVE_REQUESTS_INCOMING);
@@ -45,7 +72,7 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
         if (sourcePlayer != null && sourcePlayer.isOnline()) {
             sourcePlayer.teleport(targetPlayer);
 
-            requests.remove(targetPlayer.getUniqueId());
+            teleportRequests.remove(targetPlayer.getUniqueId());
 
             MessageUtils.sendAcceptMessageToSourcePlayer(sourcePlayer);
             MessageUtils.sendAcceptMessageToTargetPlayer(sourcePlayer, targetPlayer);
@@ -56,16 +83,21 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
 
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param targetPlayer the target player for which to deny the request
+     */
     @Override
     public void denyRequest(Player targetPlayer) {
-        final UUID sourcePlayerId = requests.get(targetPlayer.getUniqueId());
+        final UUID sourcePlayerId = teleportRequests.get(targetPlayer.getUniqueId());
 
         if (sourcePlayerId == null) {
             targetPlayer.sendMessage(MessageUtils.MSG_TP_NO_ACTIVE_REQUESTS_INCOMING);
             return;
         }
 
-        requests.remove(targetPlayer.getUniqueId());
+        teleportRequests.remove(targetPlayer.getUniqueId());
 
         final Player sourcePlayer = Bukkit.getPlayer(sourcePlayerId);
 

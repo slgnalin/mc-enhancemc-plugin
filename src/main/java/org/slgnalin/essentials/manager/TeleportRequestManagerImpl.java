@@ -1,4 +1,4 @@
-package org.slgnalin.essentials;
+package org.slgnalin.essentials.manager;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -9,14 +9,43 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class TeleportRequestManager {
+public class TeleportRequestManagerImpl implements TeleportRequestManager {
 
     private final Map<UUID, UUID> requests;
 
-    public TeleportRequestManager() {
+    public TeleportRequestManagerImpl() {
         this.requests = new HashMap<>();
     }
 
+    @Override
+    public void sendRequest(Player sourcePlayer, Player targetPlayer) {
+        if (targetPlayer == null) {
+            final Component message = Component.text("The teleport request could not be sent to the target player", NamedTextColor.RED);
+            sourcePlayer.sendMessage(message);
+
+            return;
+        }
+
+        if (!targetPlayer.isOnline()) {
+            final Component message = Component.text("Player is not online", NamedTextColor.RED);
+            sourcePlayer.sendMessage(message);
+
+            return;
+        }
+
+        requests.put(targetPlayer.getUniqueId(), sourcePlayer.getUniqueId());
+
+        sendRequestMessageToSourcePlayer(sourcePlayer, targetPlayer);
+        sendRequestMessageToTargetPlayer(sourcePlayer, targetPlayer);
+
+    }
+
+    @Override
+    public void cancelRequest() {
+
+    }
+
+    @Override
     public void acceptRequest(Player targetPlayer) {
         final UUID sourcePlayerId = requests.get(targetPlayer.getUniqueId());
 
@@ -42,6 +71,11 @@ public class TeleportRequestManager {
 
     }
 
+    @Override
+    public void denyRequest() {
+
+    }
+
     private static void sendAcceptMessageToTargetPlayer(Player sourcePlayer, Player targetPlayer) {
         final Component targetPlayerMessage = Component.text("The teleport request from", NamedTextColor.WHITE)
                 .append(Component.text(" " + sourcePlayer.getName() + " ", NamedTextColor.YELLOW))
@@ -62,31 +96,11 @@ public class TeleportRequestManager {
         sourcePlayer.sendMessage(sourcePlayerMessage);
     }
 
-    public void sendRequest(Player sourcePlayer, Player targetPlayer) {
-        if (targetPlayer == null) {
-            final Component message = Component.text("The teleport request could not be sent to the target player", NamedTextColor.RED);
-            sourcePlayer.sendMessage(message);
-
-            return;
-        }
-
-        if (!targetPlayer.isOnline()) {
-            final Component message = Component.text("Player is not online", NamedTextColor.RED);
-            sourcePlayer.sendMessage(message);
-
-            return;
-        }
-
-        requests.put(targetPlayer.getUniqueId(), sourcePlayer.getUniqueId());
-
-        sendRequestMessageToSourcePlayer(sourcePlayer, targetPlayer);
-        sendRequestMessageToTargetPlayer(sourcePlayer, targetPlayer);
-
-    }
-
     private static void sendRequestMessageToSourcePlayer(Player sourcePlayer, Player targetPlayer) {
         final Component sourcePlayerMessage = Component.text("Teleport request sent to", NamedTextColor.WHITE)
                 .append(Component.text(" " + targetPlayer.getName() + " ", NamedTextColor.YELLOW));
+
+        Bukkit.getServer().getLogger().info("Sending message %s to player %s".formatted(sourcePlayerMessage, sourcePlayer));
 
         sourcePlayer.sendMessage(sourcePlayerMessage);
     }

@@ -10,6 +10,6 @@ public interface TeleportRequestManager {
 
     void acceptRequest(Player targetPlayer);
 
-    void denyRequest();
+    void denyRequest(Player player);
 
 }

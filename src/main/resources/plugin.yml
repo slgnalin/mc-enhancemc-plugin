@@ -26,3 +26,9 @@ commands:
     aliases:
       - tpaccept
     usage: "Usage: /<command>"
+  teleport-deny:
+    description: Deny the most recent teleport request and notify the source player
+    aliases:
+      - tpdeny
+      - tpadeny
+    usage: "Usage: /<command>"

@@ -61,7 +61,37 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
     }
 
     @Override
-    public void denyRequest() {
+    public void denyRequest(Player player) {
+        final UUID sourcePlayerId = requests.get(player.getUniqueId());
+
+        if (sourcePlayerId == null) {
+            final Component message = Component.text("You currently have no active incoming teleport requests", NamedTextColor.RED);
+            player.sendMessage(message);
+            return;
+        }
+
+        requests.remove(player.getUniqueId());
+
+        final Player sourcePlayer = Bukkit.getPlayer(sourcePlayerId);
+
+        if (sourcePlayer != null && sourcePlayer.isOnline()) {
+            final Component requestTargetPlayerMessage = Component.text("The teleport request from", NamedTextColor.WHITE)
+                    .append(Component.text(" " + sourcePlayer.getName() + " ", NamedTextColor.YELLOW))
+                    .append(Component.text("was denied", NamedTextColor.WHITE));
+
+            player.sendMessage(requestTargetPlayerMessage);
+
+            final Component requestSourcePlayerMessage =
+                    Component.text("The teleport request you sent to", NamedTextColor.WHITE)
+                            .append(Component.text(" " + player.getName() + " ", NamedTextColor.YELLOW))
+                            .append(Component.text("was denied", NamedTextColor.WHITE));
+
+            sourcePlayer.sendMessage(requestSourcePlayerMessage);
+        } else {
+            final Component message =
+                    Component.text("The player who sent you this teleport request is no longer online", NamedTextColor.RED);
+            player.sendMessage(message);
+        }
 
     }
 
@@ -88,8 +118,6 @@ public class TeleportRequestManagerImpl implements TeleportRequestManager {
     private static void sendRequestMessageToSourcePlayer(Player sourcePlayer, Player targetPlayer) {
         final Component sourcePlayerMessage = Component.text("Teleport request sent to", NamedTextColor.WHITE)
                 .append(Component.text(" " + targetPlayer.getName() + " ", NamedTextColor.YELLOW));
-
-        Bukkit.getServer().getLogger().info("Sending message %s to player %s".formatted(sourcePlayerMessage, sourcePlayer));
 
         sourcePlayer.sendMessage(sourcePlayerMessage);
     }

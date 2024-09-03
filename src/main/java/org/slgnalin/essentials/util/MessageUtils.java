@@ -4,6 +4,13 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
 
+/**
+ * <p>
+ * Provides utility methods and pre-defined message components
+ * for handling and displaying messages related to teleport requests
+ * </p>
+ */
+
 public class MessageUtils {
 
     public static final Component MSG_TP_REQUEST_CANCEL = Component.text("All sent teleport request were canceled", NamedTextColor.WHITE);

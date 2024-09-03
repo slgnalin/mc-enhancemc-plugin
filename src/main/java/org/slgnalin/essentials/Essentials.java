@@ -24,12 +24,16 @@ public final class Essentials extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        registerCommands();
+
+        getLogger().info("Plugin initialised");
+    }
+
+    private void registerCommands() {
         getCommand("teleport-request").setExecutor(new TeleportRequestCommand(teleportRequestManager));
         getCommand("teleport-accept").setExecutor(new TeleportAcceptCommand(teleportRequestManager));
         getCommand("teleport-cancel").setExecutor(new TeleportCancelCommand(teleportRequestManager));
         getCommand("teleport-deny").setExecutor(new TeleportDenyCommand(teleportRequestManager));
-
-        getLogger().info("Plugin initialised");
     }
 
     public static Essentials getInstance() {

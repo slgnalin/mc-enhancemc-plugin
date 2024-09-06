@@ -1,4 +1,4 @@
-package org.slgnalin.essentials.command;
+package org.slgnalin.enhance.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

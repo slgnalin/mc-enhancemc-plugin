@@ -1,24 +1,24 @@
-package org.slgnalin.essentials;
+package org.slgnalin.enhance;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.slgnalin.essentials.command.TeleportAcceptCommand;
-import org.slgnalin.essentials.command.TeleportCancelCommand;
-import org.slgnalin.essentials.command.TeleportDenyCommand;
-import org.slgnalin.essentials.command.TeleportRequestCommand;
-import org.slgnalin.essentials.manager.TeleportRequestManager;
-import org.slgnalin.essentials.manager.TeleportRequestManagerImpl;
+import org.slgnalin.enhance.command.TeleportAcceptCommand;
+import org.slgnalin.enhance.command.TeleportCancelCommand;
+import org.slgnalin.enhance.command.TeleportDenyCommand;
+import org.slgnalin.enhance.command.TeleportRequestCommand;
+import org.slgnalin.enhance.manager.TeleportRequestManager;
+import org.slgnalin.enhance.manager.TeleportRequestManagerImpl;
 
 /**
  * <p>
  * The main plugin class, providing functionality for initializing and managing the required plugin components
  * </p>
  */
-public final class Essentials extends JavaPlugin {
+public final class EnhanceMC extends JavaPlugin {
 
     /**
-     * The {@link Essentials} plugin instance
+     * The {@link EnhanceMC} plugin instance
      */
-    private static final Essentials ESSENTIALS_PLUGIN_INSTANCE = getPlugin(Essentials.class);
+    private static final EnhanceMC ENHANCE_MC_PLUGIN_INSTANCE = getPlugin(EnhanceMC.class);
 
     /**
      * Manages teleport requests
@@ -64,12 +64,12 @@ public final class Essentials extends JavaPlugin {
     }
 
     /**
-     * Gets the instance of the {@link Essentials} plugin
+     * Gets the instance of the {@link EnhanceMC} plugin
      *
-     * @return {@link #ESSENTIALS_PLUGIN_INSTANCE}
+     * @return {@link #ENHANCE_MC_PLUGIN_INSTANCE}
      */
-    public static Essentials getEssentialsPluginInstance() {
-        return ESSENTIALS_PLUGIN_INSTANCE;
+    public static EnhanceMC getInstance() {
+        return ENHANCE_MC_PLUGIN_INSTANCE;
     }
 
 }

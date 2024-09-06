@@ -1,9 +1,9 @@
-name: mc-essentials-plugin
-description: Minecraft Essential Commands and Features Plugin
+name: mc-enhancemc-plugin
+description: Minecraft Enhance Plugin
 author: slgnalin
 website: https://github.com/slgnalin
-version: '1.0.0'
-main: org.slgnalin.essentials.Essentials
+version: '1.0.1'
+main: org.slgnalin.enhance.EnhanceMC
 api-version: '1.21'
 
 commands:

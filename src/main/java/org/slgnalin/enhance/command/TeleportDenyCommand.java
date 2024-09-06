@@ -1,28 +1,29 @@
-package org.slgnalin.essentials.command;
+package org.slgnalin.enhance.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.slgnalin.essentials.manager.TeleportRequestManager;
+import org.slgnalin.enhance.manager.TeleportRequestManager;
 
 /**
  * <p>
- * Handles the command responsible for cancelling teleport requests
+ * Handles the command responsible for denying teleport requests
  * </p>
  *
  * @see TeleportRequestManager
  */
-public class TeleportCancelCommand extends AbstractPlayerCommand {
+public class TeleportDenyCommand extends AbstractPlayerCommand {
 
     private final TeleportRequestManager teleportRequestManager;
 
-    public TeleportCancelCommand(TeleportRequestManager teleportRequestManager) {
+    public TeleportDenyCommand(TeleportRequestManager teleportRequestManager) {
         this.teleportRequestManager = teleportRequestManager;
     }
 
     @Override
     public boolean handleCommand(@NotNull Player player, @NotNull Command command, @NotNull String commandAlias, @NotNull String[] args) {
-        teleportRequestManager.cancelRequests(player);
+        teleportRequestManager.denyRequest(player);
+
         return true;
     }
 

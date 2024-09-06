@@ -1,8 +1,8 @@
-package org.slgnalin.essentials.manager;
+package org.slgnalin.enhance.manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.slgnalin.essentials.util.MessageUtils;
+import org.slgnalin.enhance.util.MessageUtils;
 
 import java.util.HashMap;
 import java.util.Map;

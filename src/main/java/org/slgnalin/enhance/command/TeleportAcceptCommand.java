@@ -1,9 +1,9 @@
-package org.slgnalin.essentials.command;
+package org.slgnalin.enhance.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.slgnalin.essentials.manager.TeleportRequestManager;
+import org.slgnalin.enhance.manager.TeleportRequestManager;
 
 /**
  * <p>

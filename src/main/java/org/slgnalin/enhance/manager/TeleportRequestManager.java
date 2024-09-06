@@ -1,4 +1,4 @@
-package org.slgnalin.essentials.manager;
+package org.slgnalin.enhance.manager;
 
 import org.bukkit.entity.Player;
 

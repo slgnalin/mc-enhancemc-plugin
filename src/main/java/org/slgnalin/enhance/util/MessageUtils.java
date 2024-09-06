@@ -1,4 +1,4 @@
-package org.slgnalin.essentials.util;
+package org.slgnalin.enhance.util;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;

@@ -1,4 +1,4 @@
-package org.slgnalin.essentials.command;
+package org.slgnalin.enhance.command;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -9,7 +9,7 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.slgnalin.essentials.manager.TeleportRequestManager;
+import org.slgnalin.enhance.manager.TeleportRequestManager;
 
 import java.util.List;
 

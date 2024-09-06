@@ -1,8 +1,8 @@
-# Minecraft Essential Commands and Features Plugin (mc-essentials-plugin)
+# Minecraft Enhance Plugin (mc-enhancemc-plugin)
 
-`mc-essentials-plugin` is a Minecraft plugin that provides essential commands for and features for a [PaperMC](https://papermc.io/)-based [Minecraft](https://www.minecraft.net/) server
+`mc-enhancemc-plugin` is a Minecraft plugin that provides essential commands for and features for a [PaperMC](https://papermc.io/)-based [Minecraft](https://www.minecraft.net/) server
 
-This plugin is designed to simplify gameplay features and provide some quality of life improvements during multiplayer gameplay
+This plugin is designed to simplify gameplay features, enhance base gameplay by providing some quality of life improvements during multiplayer gameplay
 
 ## Features
 
@@ -20,7 +20,7 @@ This plugin is designed to simplify gameplay features and provide some quality o
 
 ## Installation
 
-1. Download the latest release of the plugin from the [Releases](https://github.com/slgnalin/mc-essentials-plugin/releases) page
+1. Download the latest release of the plugin from the [Releases](https://github.com/slgnalin/mc-enhancemc-plugin/releases) page
 2. Place the plugin JAR file in the `plugins` directory of your Minecraft server
 3. Restart the server to load the plugin
 
@@ -38,7 +38,7 @@ Contributions are welcome! Feel free to fork the repository and submit a pull re
 For major changes, please open an issue to discuss what you would like to improve
 
 ## License
-
+~~~~
 See [LICENSE](LICENSE)
 
 ## Author
@@ -46,4 +46,4 @@ See [LICENSE](LICENSE)
 - **slgnalin** - [GitHub](https://github.com/slgnalin)
 
 ## Support - GitHub Issues
-For any questions or support, please visit the [GitHub Issues](https://github.com/slgnalin/mc-essentials-plugin/issues) page
+For any questions or support, please visit the [GitHub Issues](https://github.com/slgnalin/mc-enhancemc-plugin/issues) page
